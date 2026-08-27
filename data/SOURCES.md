@@ -22,6 +22,20 @@ Cited figures only. Not wage-and-hour advice. Confirm with the named authority b
   - Computer employees paid hourly **$27.63**.
   - Special weekly levels: PR/GU/VI/CNMI **$455**; American Samoa **$380**; motion picture **$1,043**.
 - **91 FR 27833** (published 2026-05-15): technical amendment implementing court judgments that vacated the 2024 Part 541 salary-level increases and restored the 2019 thresholds. DOL WHD announcement 2026-05-14.
+- **DOL WHD Minimum Wages for Tipped Employees**, last revised **2026-07-01**. https://www.dol.gov/agencies/whd/state/minimum-wage/tipped
+  - FEDERAL row: combined **$7.25**, max credit **$5.12**, cash **$2.13**, tipped if more than **$30**/month.
+  - No-credit (cash = full MW): AK $14.00, CA $16.90, MN $11.41, MT $10.85 (large), NV $12.00, OR $16.80/$15.55/$14.55, WA $17.13.
+  - FLSA-cash $2.13 with a higher combined MW: NE $15.00, VA $12.77, plus AL/GA/IN/KS/KY/LA/MS/NC/OK/SC/TN/TX/UT/WY and several territories.
+  - CT split: hotel/restaurant cash **$6.38** / credit **$10.56**; bartenders **$8.23** / **$8.71**.
+  - HI footnote: $1.25 credit only if cash+tips are at least **$7.00 more** than MW.
+  - Territories (GU $9.25, PR/VI, CNMI, AS) are on the DOL table but **not** in the 51-row desk file.
+- **29 CFR 531.60**: a tipped employee's regular rate includes the tip credit taken (not excess tips). Desk OT cash = **1.5 × combined MW − max tip credit**. Federal example: 1.5×$7.25 − $5.12 = **$5.76**/hour cash OT.
+- **WHD Fact Sheet #15** (tipped employees): cash + credit must reach MW each workweek; employer makes up a shortfall; notice required before taking a §3(m) credit.
+- **NY DOL Minimum Wage for Tipped Workers** (hospitality, 2026-01-01). The DOL WHD tipped table leaves NY rates as a cross-reference; this desk uses the NY DOL grid, not an invented fill:
+  - NYC / Long Island / Westchester: service **$14.15** cash / **$2.85** credit; food service **$11.35** / **$5.65**. Combined MW $17.00.
+  - Remainder of NYS: service **$13.30** / **$2.70**; food service **$10.70** / **$5.30**. Combined MW $16.00.
+  - NY DOL overtime sentence: time-and-one-half the minimum wage, less the applicable tip credit (same 1.5× MW − credit formula).
+  https://dol.ny.gov/minimum-wage-tipped-workers
 
 ## State EAP salary floors (2026) — higher than $684
 
@@ -48,8 +62,8 @@ Statewide **dollar** rates in `min_wages.csv` come from the DOL 2026-07-01 table
 
 - Local city/county floors (Seattle, NYC fast food, LA hotel, etc.). DOL’s own footnote 1 says they are omitted from the consolidated table.
 - Youth, training, or nonprofit subminimums.
-- Tipped cash wages as a paid floor (tip-credit flag is informational only).
+- Tipped **shortfall make-up** when actual tips are below the credit (needs a tips-received input; `--tip` assumes the max cited credit is earned).
 - Duties tests for the EAP exemption — salary is necessary, not sufficient.
 - Local city EAP floors (Seattle, NYC, etc.).
 
-Fetched 2026-08-27; state-EAP overlay added 2026-08-27T11:00Z.
+Fetched 2026-08-27; state-EAP overlay added 2026-08-27T11:00Z; tip-credit OT overlay added 2026-08-27T14:00Z.
