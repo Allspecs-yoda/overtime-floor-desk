@@ -1,0 +1,52 @@
+abbr,state,has_state_mw,standard_mw,mw_op,effective,next_step,next_date,daily_ot,tip_credit,default_band,notes,source_id,authority
+AL,Alabama,no,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,No state MW; FLSA $7.25 covers most employers,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+AK,Alaska,yes,14.00,gte,2026-07-01,,,after_8,none,statewide,Daily OT after 8 hours (AS 23.10.060) plus 40-hour week,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+AZ,Arizona,yes,15.15,gte,2026-01-01,,,flsa_40,reduced,statewide,Indexed state MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+AR,Arkansas,yes,11.00,gte,2021-01-01,,,flsa_40,reduced,statewide,State MW above federal,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+CA,California,yes,16.90,gte,2026-01-01,,,after_8_dt12,none,statewide,Daily OT after 8 (1.5x) and 12 (2x); no tip credit,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+CO,Colorado,yes,15.16,gte,2026-01-01,,,after_12,reduced,statewide,COMPS daily OT after 12 hours plus 40-hour week,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+CT,Connecticut,yes,16.94,gte,2026-01-01,,,flsa_40,reduced,statewide,Indexed state MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+DE,Delaware,yes,15.00,gte,2025-01-01,,,flsa_40,reduced,statewide,State MW $15,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+DC,District of Columbia,yes,18.40,gte,2026-07-01,,,flsa_40,reduced,statewide,Highest listed statewide rate on DOL 2026-07-01 table,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+FL,Florida,yes,14.00,gte,2025-09-30,15.00,2026-09-30,flsa_40,reduced,statewide,Amendment 2 remaining step $15.00 on 2026-09-30,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01; Fla. Const. Art. X §24
+GA,Georgia,below_federal,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,State MW below federal; FLSA $7.25 applies to covered employers,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+HI,Hawaii,yes,16.00,gte,2026-01-01,,,flsa_40,reduced,statewide,State MW $16,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+ID,Idaho,equals_federal,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,Equals federal MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+IL,Illinois,yes,15.00,gte,2025-01-01,,,flsa_40,reduced,statewide,State MW $15,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+IN,Indiana,equals_federal,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,Equals federal MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+IA,Iowa,equals_federal,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,Equals federal MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+KS,Kansas,equals_federal,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,Equals federal MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+KY,Kentucky,equals_federal,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,Equals federal MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+LA,Louisiana,no,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,No state MW; FLSA $7.25,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+ME,Maine,yes,15.10,gte,2026-01-01,,,flsa_40,reduced,statewide,Indexed state MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+MD,Maryland,yes,15.00,gte,2024-01-01,,,flsa_40,reduced,statewide,State MW $15,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+MA,Massachusetts,yes,15.00,gte,2023-01-01,,,flsa_40,reduced,statewide,State MW $15,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+MI,Michigan,yes,13.73,gte,2026-01-01,,,flsa_40,reduced,statewide,Indexed / scheduled state MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+MN,Minnesota,yes,11.41,gte,2026-01-01,,,flsa_40,none,statewide,No tip credit (tipped cash = full MW),DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+MS,Mississippi,no,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,No state MW; FLSA $7.25,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+MO,Missouri,yes,15.00,gte,2026-01-01,,,flsa_40,reduced,statewide,State MW $15,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+MT,Montana,yes,10.85,gte,2026-01-01,,,flsa_40,none,statewide,Non-FLSA employers with gross sales ≤$110k may pay $4.00,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01 fn.3
+NE,Nebraska,yes,15.00,gte,2026-01-01,,,flsa_40,reduced,statewide,State MW $15,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+NV,Nevada,yes,12.00,gte,2024-07-01,,,after_8_if_low,none,statewide,Daily OT after 8 if paid <1.5x MW (NRS 608.018); no tip credit,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+NH,New Hampshire,equals_federal,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,Equals federal MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+NJ,New Jersey,yes,15.92,gte,2026-01-01,,,flsa_40,reduced,statewide,"Default ≥6 employees; <6 or seasonal is $15.23 (DOL fn.4)",DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01 fn.4
+NM,New Mexico,yes,12.00,gte,2023-01-01,,,flsa_40,reduced,statewide,State MW $12,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+NY,New York,yes,16.00,gte,2026-01-01,,,flsa_40,reduced,rest_of_state,Remainder of state $16.00; NYC/Nassau/Suffolk/Westchester $17.00 (DOL fn.5),DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01 fn.5
+NC,North Carolina,equals_federal,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,Equals federal MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+ND,North Dakota,equals_federal,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,Equals federal MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+OH,Ohio,yes,11.00,gte,2026-01-01,,,flsa_40,reduced,statewide,Employers with annual gross receipts under $405,000 pay $7.25 (DOL fn.6),DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01 fn.6
+OK,Oklahoma,equals_federal,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,Equals federal MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+OR,Oregon,yes,15.55,gte,2026-07-01,,,flsa_40,none,standard,Portland metro $16.80; standard $15.55; nonurban $14.55 (DOL fn.7); no tip credit,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01 fn.7
+PA,Pennsylvania,equals_federal,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,Equals federal MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+RI,Rhode Island,yes,16.00,gte,2026-01-01,,,flsa_40,reduced,statewide,State MW $16,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+SC,South Carolina,no,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,No state MW; FLSA $7.25,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+SD,South Dakota,yes,11.85,gte,2026-01-01,,,flsa_40,reduced,statewide,Indexed state MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+TN,Tennessee,no,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,No state MW; FLSA $7.25,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+TX,Texas,equals_federal,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,Equals federal MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+UT,Utah,equals_federal,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,Equals federal MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+VT,Vermont,yes,14.42,gte,2026-01-01,,,flsa_40,reduced,statewide,Indexed state MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+VA,Virginia,yes,12.77,gte,2026-01-01,,,flsa_40,flsa,statewide,State MW above federal,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+WA,Washington,yes,17.13,gte,2026-01-01,,,flsa_40,none,statewide,No tip credit; highest state (non-DC) on DOL 2026-07-01 table,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+WV,West Virginia,yes,8.75,gte,2015-01-01,,,flsa_40,reduced,statewide,State MW $8.75,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+WI,Wisconsin,equals_federal,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,Equals federal MW,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
+WY,Wyoming,below_federal,7.25,gte,2009-07-24,,,flsa_40,flsa,statewide,State MW below federal; FLSA $7.25 applies to covered employers,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table 2026-07-01
