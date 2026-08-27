@@ -11,3 +11,6 @@ as_eap_weekly,380,usd_per_week,American Samoa special salary level,DOL-WHD-EAP-2
 motion_picture_weekly,1043,usd_per_week,Motion picture industry special base rate,DOL-WHD-EAP-2026,DOL WHD earnings thresholds
 table_as_of,2026-07-01,date,DOL WHD consolidated MW table last revised,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table
 eap_rule_note,vacated_2024_rule,text,2024 raised thresholds vacated; 2019 $684 / $107432 restored May 2026,DOL-WHD-EAP-2026,91 FR 27833 (2026-05-15 technical amendment)
+tip_cash_wage,2.13,usd_per_hour,FLSA §3(m)(2)(A) minimum cash wage for tipped employees,FLSA-3m,29 U.S.C. § 203(m)(2)(A); DOL WHD tipped table 2026-07-01
+tip_max_credit,5.12,usd_per_hour,$7.25 − $2.13; maximum federal tip credit toward MW and OT,FLSA-3m,29 U.S.C. § 203(m)(2)(A); 29 CFR 531.60
+tip_ot_cash,5.76,usd_per_hour,Federal OT cash = 1.5×$7.25 − $5.12; excess tips not in regular rate,CFR-531.60,29 CFR 531.60; WHD Fact Sheet #15
