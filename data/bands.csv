@@ -1,0 +1,10 @@
+abbr,band,label,standard_mw,effective,notes,source_id
+NJ,small,fewer than 6 or seasonal,15.23,2026-01-01,DOL fn.4: employers with <6 people and seasonal employment,DOL-WHD-MW-2026-07-01
+NJ,standard,6 or more employees,15.92,2026-01-01,Default band used by --list NJ,DOL-WHD-MW-2026-07-01
+NY,downstate,"NYC, Nassau, Suffolk, Westchester",17.00,2026-01-01,DOL fn.5,DOL-WHD-MW-2026-07-01
+NY,rest_of_state,remainder of New York,16.00,2026-01-01,Default band used by --list NY,DOL-WHD-MW-2026-07-01
+OH,small,annual gross receipts under $405000,7.25,2026-01-01,DOL fn.6,DOL-WHD-MW-2026-07-01
+OH,standard,gross receipts $405000 or more,11.00,2026-01-01,Default band used by --list OH,DOL-WHD-MW-2026-07-01
+OR,portland,Portland metro,16.80,2026-07-01,DOL fn.7,DOL-WHD-MW-2026-07-01
+OR,standard,standard Oregon,15.55,2026-07-01,Default band used by --list OR,DOL-WHD-MW-2026-07-01
+OR,nonurban,nonurban counties,14.55,2026-07-01,DOL fn.7,DOL-WHD-MW-2026-07-01
