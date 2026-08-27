@@ -16,6 +16,9 @@ No network. No API keys. Planning only — not wage-and-hour advice.
   python3 desk/quote.py --exempt --salary-weekly 650
   python3 desk/quote.py --exempt --salary-weekly 900 --state CA
   python3 desk/quote.py --exempt --list-eap
+  python3 desk/quote.py --list-tips TX
+  python3 desk/quote.py --tip TX --hours 48
+  python3 desk/quote.py --tip NY --band downstate --role food --hours 45
 """
 
 from __future__ import annotations
@@ -32,6 +35,7 @@ WAGES = DATA / "min_wages.csv"
 BANDS = DATA / "bands.csv"
 FLSA = DATA / "flsa.csv"
 EAP = DATA / "eap_state.csv"
+TIPS = DATA / "tips.csv"
 
 FL_STEP_ON = date(2026, 9, 30)
 FL_STEP_RATE = 15.00
@@ -42,6 +46,8 @@ COMPUTER_HOURLY = 27.63
 OT_MULT = 1.5
 WEEKLY_OT_HOURS = 40.0
 FED_MW = 7.25
+FED_TIP_CASH = 2.13
+FED_TIP_CREDIT = 5.12
 
 
 def load_csv(path: Path) -> list[dict]:
@@ -96,14 +102,88 @@ def eap_for(abbr: str | None, band: str | None) -> dict:
     return hits[0]
 
 
+def tip_rows() -> list[dict]:
+    return load_csv(TIPS)
+
+
+def tips_for(abbr: str, band: str | None, role: str | None) -> dict:
+    hits = [r for r in tip_rows() if r["abbr"].upper() == abbr.upper()]
+    if not hits:
+        raise SystemExit(f"no tip-credit row for {abbr}")
+    if band:
+        banded = [r for r in hits if r["band"] == band]
+        if banded:
+            hits = banded
+    if role:
+        role_hits = [r for r in hits if r["role"] == role]
+        if not role_hits:
+            names = sorted({r["role"] for r in hits})
+            raise SystemExit(f"unknown --role {role!r} for {abbr}; try: {', '.join(names)}")
+        hits = role_hits
+    else:
+        defaults = [r for r in hits if r["role"] == "default"]
+        if defaults:
+            hits = defaults
+        elif abbr.upper() == "NY":
+            food = [r for r in hits if r["role"] == "food"]
+            if food:
+                hits = food
+        elif abbr.upper() == "CT":
+            hotel = [r for r in hits if r["role"] == "hotel"]
+            if hotel:
+                hits = hotel
+    return hits[0]
+
+
+def tip_ot_cash(row: dict, ot_hours: float) -> dict:
+    combined = float(row["combined_mw"])
+    credit = float(row["max_tip_credit"])
+    cash = float(row["cash_wage"])
+    kind = row.get("credit_kind") or "flsa"
+    ot_full_c = cents(OT_MULT * combined)
+    credit_c = cents(credit)
+    ot_cash_c = ot_full_c if kind == "none" else ot_full_c - credit_c
+    ot_full = ot_full_c / 100.0
+    ot_cash = ot_cash_c / 100.0
+    note = (
+        "29 CFR 531.60 / WHD Fact Sheet #15: regular rate includes the tip credit "
+        "taken (not excess tips). Cash OT = 1.5× combined MW − max tip credit "
+        "(nearest cent). Straight-time cash stays at the cited cash wage."
+    )
+    if kind == "none":
+        note = (
+            "No tip credit in this jurisdiction. Cash wage = full MW; OT cash = 1.5× MW. "
+            "Tips sit on top and are not a credit against the floor."
+        )
+    return {
+        "combined": combined,
+        "credit": credit,
+        "cash": cash,
+        "ot_full": ot_full,
+        "ot_cash": ot_cash,
+        "ot_hours": ot_hours,
+        "straight_cash_gross": cents(cash * max(0.0, WEEKLY_OT_HOURS)) / 100.0,
+        "ot_cash_gross": cents(ot_cash * ot_hours) / 100.0,
+        "kind": kind,
+        "note": note,
+    }
+
+
 def parse_as_of(s: str | None) -> date:
     if not s:
         return datetime.now().date()
     return datetime.strptime(s, "%Y-%m-%d").date()
 
 
+def cents(n: float) -> int:
+    return int(round(n * 100 + 1e-9))
+
+
 def money(n: float) -> str:
-    return f"${n:,.2f}"
+    c = cents(n)
+    sign = "-" if c < 0 else ""
+    c = abs(c)
+    return f"{sign}${c // 100:,}.{c % 100:02d}"
 
 
 def overlay_as_of(row: dict, as_of: date) -> dict:
@@ -407,6 +487,25 @@ def cmd_watch() -> None:
     print("- OR split: Portland $16.80 / standard $15.55 / nonurban $14.55 (DOL fn.7).")
     print("- NJ split: ≥6 employees $15.92 / <6 or seasonal $15.23 (DOL fn.4).")
     print("- OH small-employer $7.25 if gross receipts under $405,000 (DOL fn.6).")
+    print(
+        f"- FLSA tip credit still $2.13 cash / ${FED_TIP_CREDIT:.2f} credit "
+        "(DOL WHD tipped table 2026-07-01). Federal OT cash on $7.25 = "
+        f"{money(OT_MULT * FED_MW - FED_TIP_CREDIT)}/hr "
+        "(1.5× MW − credit; 29 CFR 531.60)."
+    )
+    print(
+        "- No-credit cash = full MW: AK $14.00, CA $16.90, MN $11.41, MT $10.85, "
+        "NV $12.00, OR $16.80/$15.55/$14.55, WA $17.13, GU $9.25 (territories not in 51-row)."
+    )
+    print(
+        "- NY hospitality 2026-01-01 (NY DOL, not the blank DOL tipped cell): "
+        "downstate food $11.35 cash / $5.65 credit; service $14.15 / $2.85; "
+        "rest food $10.70 / $5.30; rest service $13.30 / $2.70."
+    )
+    print(
+        "- CT split on DOL table: hotel/restaurant cash $6.38 / $10.56 credit; "
+        "bartenders $8.23 / $8.71. HI $1.25 credit only if cash+tips ≥ MW+$7."
+    )
 
 
 def cmd_cheap() -> None:
@@ -432,6 +531,62 @@ def cmd_list_eap() -> None:
             f"{label:<22} {money(float(r['weekly'])):>10} "
             f"{money(float(r['annual'])):>12}  {r['formula']}"
         )
+
+
+def cmd_list_tips(abbr: str | None) -> None:
+    table = tip_rows()
+    if abbr:
+        hits = [r for r in table if r["abbr"].upper() == abbr.upper()]
+        if not hits:
+            raise SystemExit(f"unknown state {abbr}")
+        table = hits
+    print(
+        f"{'jurisdiction':<22} {'role':<10} {'MW':>7} {'cash':>7} {'credit':>7}  "
+        f"{'ot_cash':>8}  kind"
+    )
+    for r in table:
+        ot = tip_ot_cash(r, 0.0)
+        label = f"{r['abbr']}/{r['band']}"
+        print(
+            f"{label:<22} {r['role']:<10} {money(ot['combined']):>7} "
+            f"{money(ot['cash']):>7} {money(ot['credit']):>7}  "
+            f"{money(ot['ot_cash']):>8}  {ot['kind']}"
+        )
+
+
+def cmd_tip(args: argparse.Namespace) -> None:
+    abbr = args.tip.upper()
+    hours = float(args.hours)
+    ot_hours = max(0.0, hours - WEEKLY_OT_HOURS)
+    row = tips_for(abbr, args.band, args.role)
+    q = tip_ot_cash(row, ot_hours)
+    print(
+        f"state={abbr} band={row['band']} role={row['role']} "
+        f"hours={hours:g} ot_hours={ot_hours:g}"
+    )
+    print(
+        f"combined_mw={money(q['combined'])}  cash_wage={money(q['cash'])}  "
+        f"max_credit={money(q['credit'])}  kind={q['kind']}"
+    )
+    print(
+        f"ot_full_rate={money(q['ot_full'])}  ot_cash_rate={money(q['ot_cash'])}  "
+        f"(1.5× MW − credit)"
+    )
+    print(
+        f"straight_cash_on_40={money(q['straight_cash_gross'])}  "
+        f"ot_cash_gross={money(q['ot_cash_gross'])}  "
+        f"employer_cash={money(q['straight_cash_gross'] + q['ot_cash_gross'])}"
+    )
+    print(q["note"])
+    print(f"source: {row.get('authority')}")
+    print(row.get("notes") or "")
+    if q["kind"] != "none" and args.hourly is not None:
+        paid = float(args.hourly)
+        if paid + 1e-9 < q["cash"]:
+            print(
+                f"WARNING: cash hourly {money(paid)} is under cited cash floor "
+                f"{money(q['cash'])}."
+            )
 
 
 def cmd_exempt(
@@ -518,6 +673,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--salary-weekly", dest="salary_weekly", type=float)
     p.add_argument("--state", help="state abbr for --exempt (uses higher of federal/state EAP)")
     p.add_argument("--list-eap", dest="list_eap", action="store_true")
+    p.add_argument("--list-tips", dest="list_tips", nargs="?", const="ALL")
+    p.add_argument("--tip", help="state abbr for tip-credit OT cash quote")
+    p.add_argument("--role", help="tip role (food, service, hotel, bartender)")
     return p
 
 
@@ -538,6 +696,12 @@ def main() -> None:
         return
     if args.list_eap:
         cmd_list_eap()
+        return
+    if args.list_tips:
+        cmd_list_tips(None if args.list_tips == "ALL" else args.list_tips)
+        return
+    if args.tip:
+        cmd_tip(args)
         return
     if args.exempt:
         if args.salary_weekly is None:
