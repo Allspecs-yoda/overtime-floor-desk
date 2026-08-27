@@ -1,27 +1,31 @@
 # Overtime Floor Desk
 
-Offline 2026 desk that prices a shift against **51 min-wage floors** (50 states + DC) from the **DOL WHD Consolidated Minimum Wage Table (revised 2026-07-01)**, FLSA **1.5× after 40**, the restored EAP salary test (**$684/week / $35,568** after the 2024 rule was vacated), **six cited state EAP floors that beat $684**, and cited daily-OT overlays (CA §510 after 8/12, AK after 8, CO after 12, NV after 8 only if the rate is cheap). Florida’s remaining **$15.00 on 2026-09-30** step is an `--as-of` switch — the July table still lists $14.00.
+Offline 2026 desk that prices a shift against **51 min-wage floors** (50 states + DC) from the **DOL WHD Consolidated Minimum Wage Table (revised 2026-07-01)**, FLSA **1.5× after 40**, the restored EAP salary test (**$684/week / $35,568** after the 2024 rule was vacated), **six cited state EAP floors that beat $684**, cited daily-OT overlays (CA §510 after 8/12, AK after 8, CO after 12, NV after 8 only if the rate is cheap), and **tip-credit OT cash** from the **DOL WHD tipped table (2026-07-01)** plus **29 CFR 531.60** (federal OT cash **$5.76** = 1.5×$7.25 − $5.12, not $2.13). Florida’s remaining **$15.00 on 2026-09-30** step is an `--as-of` switch — the July table still lists $14.00.
 
 ## Who it's for
 
-Owners, bookkeepers, and ops leads who still quote OT off a $7.25 blog post, miss NY/OR/NJ/OH footnote bands, treat a $900/week “manager” as exempt in California, or think the 2024 white-collar salary hike is live.
+Owners, bookkeepers, and ops leads who still quote OT off a $7.25 blog post, miss NY/OR/NJ/OH footnote bands, treat a $900/week “manager” as exempt in California, think the 2024 white-collar salary hike is live, or pay tipped OT cash at $2.13.
 
 ## What's included
 
 - `data/min_wages.csv` — 51 rows: DOL July 1, 2026 statewide floor, daily-OT flag, next step
 - `data/bands.csv` — NY downstate $17 / rest $16; OR Portland $16.80 / standard $15.55 / nonurban $14.55; NJ $15.92 / $15.23; OH $11 / $7.25
 - `data/eap_state.csv` — federal $684 plus WA $1,541.70, CA $1,352, NY $1,275/$1,199.10, CO $1,111.23, AK $1,120, ME $871.16
-- `data/flsa.csv` — $7.25, 40-hour week, EAP $684 / HCE $107,432 / computer $27.63
+- `data/tips.csv` — 51-state + FED cash / credit / OT-cash rates (NY hospitality from NY DOL; CT hotel vs bartender)
+- `data/flsa.csv` — $7.25, 40-hour week, EAP $684 / HCE $107,432 / computer $27.63 / tip cash $2.13 / OT cash $5.76
 - `data/sample_shifts.csv` — 18 worked quotes (CA 9×5, FL step, NV gate, CA/WA/NY $900 miss)
-- `desk/quote.py` — `--list`, `--quote`, `--batch`, `--watch`, `--cheap`, `--high`, `--bands`, `--exempt --state`, `--list-eap`, `--as-of`
-- `examples/` — CA daily OT, FL $15 step, NY/OR bands, EAP $684, NV daily gate, **state EAP floors**
-- `data/SOURCES.md` — DOL WHD table, 29 U.S.C. §§ 206–207, 91 FR 27833, Lab. Code §515, AS 23.10.055(b), 26 M.R.S. §663(3)(K), 7 CCR 1103-14, WA L&I
+- `desk/quote.py` — `--list`, `--quote`, `--batch`, `--watch`, `--cheap`, `--high`, `--bands`, `--exempt --state`, `--list-eap`, `--list-tips`, `--tip`, `--as-of`
+- `examples/` — CA daily OT, FL $15 step, NY/OR bands, EAP $684, NV daily gate, **state EAP floors**, **tip OT cash**
+- `data/SOURCES.md` — DOL WHD table, 29 U.S.C. §§ 206–207, 91 FR 27833, Lab. Code §515, 29 CFR 531.60, NY DOL tipped grid
 
 ## Quick start
 
 ```bash
 python3 desk/quote.py --watch
 python3 desk/quote.py --list-eap
+python3 desk/quote.py --list-tips TX
+python3 desk/quote.py --tip TX --hours 48
+python3 desk/quote.py --tip NY --band downstate --role food --hours 45
 python3 desk/quote.py --list CA
 python3 desk/quote.py --quote TX --hourly 18 --hours 48
 python3 desk/quote.py --quote CA --hourly 22 --hours 45 --days 5 --daily
@@ -51,4 +55,4 @@ MIT for the desk code, CSVs, and docs. Cited DOL / FLSA / state figures remain t
 
 Shipped by Night Shift Foundry for Dakota (@Allspecs-yoda).
 SKU: NSF-20260827-OT-FLOOR | Decision: list | Cycle: 2026-08-27
-Polish: six-state EAP floors (WA/CA/NY/CO/AK/ME) + CA computer $58.85
+Polish: DOL 2026-07-01 tip-credit OT cash (51 rows + NY hospitality + 29 CFR 531.60 $5.76)
