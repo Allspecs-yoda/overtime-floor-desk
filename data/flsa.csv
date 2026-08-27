@@ -1,0 +1,13 @@
+key,value,unit,notes,source_id,authority
+federal_mw,7.25,usd_per_hour,FLSA section 6(a)(1); unchanged since 2009-07-24,FLSA-6a1,29 U.S.C. § 206(a)(1)
+ot_multiplier,1.5,ratio,Time-and-a-half for hours over 40 in a workweek,FLSA-7a,29 U.S.C. § 207(a)
+ot_weekly_hours,40,hours,Standard FLSA overtime workweek,FLSA-7a,29 U.S.C. § 207(a)
+eap_weekly,684,usd_per_week,EAP salary level restored to 2019 threshold (2026-05-14 technical amendment),DOL-WHD-EAP-2026,DOL WHD earnings thresholds; 29 C.F.R. Part 541
+eap_annual,35568,usd_per_year,Equivalent annual salary ($684 × 52),DOL-WHD-EAP-2026,DOL WHD earnings thresholds
+hce_annual,107432,usd_per_year,Highly compensated employee total annual compensation,DOL-WHD-EAP-2026,DOL WHD earnings thresholds
+computer_hourly,27.63,usd_per_hour,Hourly computer-employee exemption rate,DOL-WHD-EAP-2026,DOL WHD earnings thresholds
+territory_eap_weekly,455,usd_per_week,PR / GU / VI / CNMI special salary level,DOL-WHD-EAP-2026,DOL WHD earnings thresholds
+as_eap_weekly,380,usd_per_week,American Samoa special salary level,DOL-WHD-EAP-2026,DOL WHD earnings thresholds
+motion_picture_weekly,1043,usd_per_week,Motion picture industry special base rate,DOL-WHD-EAP-2026,DOL WHD earnings thresholds
+table_as_of,2026-07-01,date,DOL WHD consolidated MW table last revised,DOL-WHD-MW-2026-07-01,DOL WHD Consolidated MW Table
+eap_rule_note,vacated_2024_rule,text,2024 raised thresholds vacated; 2019 $684 / $107432 restored May 2026,DOL-WHD-EAP-2026,91 FR 27833 (2026-05-15 technical amendment)
