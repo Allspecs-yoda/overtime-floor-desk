@@ -1,0 +1,14 @@
+name,state,band,hourly,hours,days,hours_over_8,hours_over_12,salary_weekly,as_of
+tx-40,TX,statewide,18.00,40,5,0,0,,2026-08-27
+tx-48,TX,statewide,18.00,48,5,0,0,,2026-08-27
+ca-9x5,CA,statewide,22.00,45,5,5,0,,2026-08-27
+ca-13,CA,statewide,22.00,13,1,5,1,,2026-08-27
+ak-9x5,AK,statewide,20.00,45,5,5,0,,2026-08-27
+ny-downstate,NY,downstate,24.00,44,5,0,0,,2026-08-27
+or-portland,OR,portland,21.00,42,5,0,0,,2026-08-27
+fl-pre,FL,statewide,14.00,40,5,0,0,,2026-09-29
+fl-post,FL,statewide,14.00,40,5,0,0,,2026-09-30
+nv-low,NV,statewide,12.00,45,5,5,0,,2026-08-27
+nv-high,NV,statewide,20.00,45,5,5,0,,2026-08-27
+exempt-miss,CA,statewide,22.00,50,5,10,0,650,2026-08-27
+exempt-clear,TX,statewide,40.00,50,5,0,0,900,2026-08-27
