@@ -1,0 +1,9 @@
+abbr,band,weekly,annual,formula,duties_note,computer_hourly,computer_annual,hce_annual,effective,source_id,authority
+FED,federal,684.00,35568,"29 C.F.R. Part 541 restored 2019 level","salary + duties; HCE lighter duties",27.63,,107432,2026-05-14,DOL-WHD-EAP-2026,"DOL WHD earnings thresholds; 91 FR 27833"
+WA,statewide,1541.70,80168.40,"2.25 x WA MW $17.13 x 40 hours (small and large employers aligned 2026)","WAC 296-128 EAP; must also meet federal $684",59.96,,,2026-01-01,WA-LNI-EAP-2026,"WA L&I overtime rules; WAC 296-128"
+CA,statewide,1352.00,70304,"2 x CA MW $16.90 x 40 hours (Lab. Code 515)","no state HCE; duties under IWC / Lab. Code",58.85,122573.13,,2026-01-01,CA-LAB-515-2026,"Cal. Lab. Code 515; DIR OPRL computer 515.5"
+NY,downstate,1275.00,66300,"NYCRR exec/admin salary — NYC Nassau Suffolk Westchester","professional exemption has no NY salary (federal $684 still applies)",,,,2026-01-01,NY-EAP-2026,"12 NYCRR Part 142; NYS DOL 2026 wage orders"
+NY,rest_of_state,1199.10,62353.20,"NYCRR exec/admin salary — remainder of state","professional exemption has no NY salary (federal $684 still applies)",,,,2026-01-01,NY-EAP-2026,"12 NYCRR Part 142; NYS DOL 2026 wage orders"
+CO,statewide,1111.23,57784,"COMPS Order EAP (7 CCR 1103-1 R.2.5.1) via 2026 PAY CALC","computer may use $34.85/hr or EAP weekly",34.85,,130014,2026-01-01,CO-PAYCALC-2026,"7 CCR 1103-14 2026 PAY CALC Order row E/F/G"
+AK,statewide,1120.00,58240,"AS 23.10.055(b): 2 x AK MW $14.00 x first 40 hours","MW from DOL 2026-07-01 table ($14 on 2026-07-01)",,,,2026-07-01,AK-AS-23.10.055,"Alaska Stat. 23.10.055(b)"
+ME,statewide,871.16,45300,"26 M.R.S. 663(3)(K): greater of 3000x ME MW $15.10 or federal annualized","3000 x $15.10 = $45300/yr / 52 = $871.1538 stored as $871.16",,,,2026-01-01,ME-26MRS-663,"26 M.R.S. 663(3)(K)"

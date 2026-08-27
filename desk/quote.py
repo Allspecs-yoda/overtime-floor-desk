@@ -14,6 +14,8 @@ No network. No API keys. Planning only — not wage-and-hour advice.
   python3 desk/quote.py --high
   python3 desk/quote.py --bands OR
   python3 desk/quote.py --exempt --salary-weekly 650
+  python3 desk/quote.py --exempt --salary-weekly 900 --state CA
+  python3 desk/quote.py --exempt --list-eap
 """
 
 from __future__ import annotations
@@ -29,6 +31,7 @@ DATA = ROOT / "data"
 WAGES = DATA / "min_wages.csv"
 BANDS = DATA / "bands.csv"
 FLSA = DATA / "flsa.csv"
+EAP = DATA / "eap_state.csv"
 
 FL_STEP_ON = date(2026, 9, 30)
 FL_STEP_RATE = 15.00
@@ -64,6 +67,33 @@ def band_rows() -> list[dict]:
 
 def bands_for(abbr: str) -> list[dict]:
     return [b for b in band_rows() if b["abbr"].upper() == abbr.upper()]
+
+
+def eap_rows() -> list[dict]:
+    return load_csv(EAP)
+
+
+def eap_for(abbr: str | None, band: str | None) -> dict:
+    table = eap_rows()
+    fed = next(r for r in table if r["abbr"] == "FED")
+    if not abbr or abbr.upper() in ("FED", "US", "FLSA"):
+        return fed
+    hits = [r for r in table if r["abbr"].upper() == abbr.upper()]
+    if not hits:
+        return fed
+    if band:
+        match = next((r for r in hits if r["band"] == band), None)
+        if match:
+            return match
+    default_band = None
+    wage = by_abbr().get(abbr.upper())
+    if wage:
+        default_band = wage.get("default_band")
+    if default_band:
+        match = next((r for r in hits if r["band"] == default_band), None)
+        if match:
+            return match
+    return hits[0]
 
 
 def parse_as_of(s: str | None) -> date:
@@ -330,7 +360,14 @@ def cmd_batch(path: Path, daily_flag: bool) -> None:
             exempt = ""
             if salary.strip():
                 sw = float(salary)
-                exempt = "BELOW_EAP" if sw < EAP_WEEKLY else "MEETS_EAP_SALARY"
+                eap = eap_for(abbr, row.get("default_band"))
+                floor = max(EAP_WEEKLY, float(eap["weekly"]))
+                tag = eap["abbr"] if float(eap["weekly"]) > EAP_WEEKLY else "FED"
+                exempt = (
+                    f"BELOW_{tag}_EAP"
+                    if sw + 1e-9 < floor
+                    else f"MEETS_{tag}_EAP_SALARY"
+                )
             print(
                 f"{rec.get('name')},{abbr},{row.get('default_band')},{hourly:.2f},"
                 f"{hours:g},{q['floor']:.2f},{q['status']},{q['ot_15_hours']:g},"
@@ -351,6 +388,20 @@ def cmd_watch() -> None:
     )
     print(f"- HCE total annual compensation {money(HCE_ANNUAL)}.")
     print(f"- Computer hourly exemption {money(COMPUTER_HOURLY)}.")
+    print(
+        "- State EAP salary floors (higher than $684, cited): "
+        "WA $1,541.70 (2.25× $17.13 × 40, L&I 2026); "
+        "CA $1,352 (2× $16.90 × 40, Lab. Code §515); "
+        "NY downstate $1,275 / rest $1,199.10 (exec/admin); "
+        "CO $1,111.23 (7 CCR 1103-14 PAY CALC row E); "
+        "AK $1,120 (AS 23.10.055(b) 2× $14 × 40 after 2026-07-01); "
+        "ME $871.16 (26 M.R.S. §663(3)(K) 3000× $15.10)."
+    )
+    print(
+        "- CA computer 515.5: $58.85/hr or $122,573.13/yr (DIR OPRL 2026-01-01). "
+        "WA computer $59.96/hr (L&I). CO computer $34.85/hr or EAP weekly; "
+        "CO HCE $130,014 (PAY CALC row G). CA has no state HCE."
+    )
     print("- Highest DOL July 1 statewide listed: DC $18.40; next WA $17.13.")
     print("- NY split: downstate $17.00 / rest $16.00 (DOL fn.5).")
     print("- OR split: Portland $16.80 / standard $15.55 / nonurban $14.55 (DOL fn.7).")
@@ -372,29 +423,78 @@ def cmd_high() -> None:
         print(f"  {r['abbr']}  {money(mw_of(r)):>8}  {r['state']}")
 
 
-def cmd_exempt(salary_weekly: float, hourly: float | None) -> None:
-    print(f"EAP weekly salary test: {money(EAP_WEEKLY)}  (annual {money(EAP_ANNUAL)})")
-    print(f"HCE annual: {money(HCE_ANNUAL)}")
-    print(f"computer hourly: {money(COMPUTER_HOURLY)}")
-    if salary_weekly < EAP_WEEKLY:
+def cmd_list_eap() -> None:
+    print("2026 EAP salary floors (federal $684 is always the floor; state may be higher)")
+    print(f"{'jurisdiction':<22} {'weekly':>10} {'annual':>12}  formula")
+    for r in eap_rows():
+        label = f"{r['abbr']}/{r['band']}"
         print(
-            f"RESULT: {money(salary_weekly)}/week is BELOW the EAP salary level — "
-            "overtime exemption fails the salary test (duties test not evaluated)."
+            f"{label:<22} {money(float(r['weekly'])):>10} "
+            f"{money(float(r['annual'])):>12}  {r['formula']}"
+        )
+
+
+def cmd_exempt(
+    salary_weekly: float,
+    hourly: float | None,
+    state: str | None,
+    band: str | None,
+) -> None:
+    fed_w = EAP_WEEKLY
+    eap = eap_for(state, band)
+    state_w = float(eap["weekly"])
+    floor = max(fed_w, state_w)
+    print(f"federal EAP weekly: {money(fed_w)}  (annual {money(EAP_ANNUAL)})")
+    print(f"federal HCE annual: {money(HCE_ANNUAL)}")
+    print(f"federal computer hourly: {money(COMPUTER_HOURLY)}")
+    if eap["abbr"] != "FED":
+        print(
+            f"state EAP {eap['abbr']}/{eap['band']}: {money(state_w)}/week "
+            f"({money(float(eap['annual']))}/year) — {eap['formula']}"
+        )
+        print(f"duties note: {eap['duties_note']}")
+        print(f"controlling weekly floor = max(federal, state) = {money(floor)}")
+        if eap.get("computer_hourly"):
+            print(f"state computer hourly: {money(float(eap['computer_hourly']))}")
+        if eap.get("computer_annual"):
+            print(f"state computer annual: {money(float(eap['computer_annual']))}")
+        if eap.get("hce_annual"):
+            print(f"state HCE annual: {money(float(eap['hce_annual']))}")
+        print(f"source: {eap.get('authority')}")
+    else:
+        print("no higher cited state EAP row — federal $684 controls the salary level.")
+        print("controlling weekly floor = $684.00")
+    if salary_weekly + 1e-9 < floor:
+        print(
+            f"RESULT: {money(salary_weekly)}/week is BELOW the controlling salary level "
+            f"{money(floor)} — overtime exemption fails the salary test "
+            "(duties test not evaluated)."
         )
     else:
         print(
-            f"RESULT: {money(salary_weekly)}/week MEETS the EAP salary level. "
-            "Duties test still required. Not advice."
+            f"RESULT: {money(salary_weekly)}/week MEETS the controlling salary level "
+            f"{money(floor)}. Duties test still required. Not advice."
         )
     if hourly is not None:
+        ch = COMPUTER_HOURLY
+        state_ch = float(eap["computer_hourly"]) if eap.get("computer_hourly") else None
         print(
-            f"computer hourly compare: {money(hourly)} vs {money(COMPUTER_HOURLY)} → "
+            f"federal computer hourly compare: {money(hourly)} vs {money(ch)} → "
             + (
-                "MEETS computer hourly"
-                if hourly + 1e-9 >= COMPUTER_HOURLY
-                else "BELOW computer hourly"
+                "MEETS federal computer hourly"
+                if hourly + 1e-9 >= ch
+                else "BELOW federal computer hourly"
             )
         )
+        if state_ch is not None:
+            print(
+                f"state computer hourly compare: {money(hourly)} vs {money(state_ch)} → "
+                + (
+                    "MEETS state computer hourly"
+                    if hourly + 1e-9 >= state_ch
+                    else "BELOW state computer hourly"
+                )
+            )
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -416,6 +516,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--bands", dest="show_bands")
     p.add_argument("--exempt", action="store_true")
     p.add_argument("--salary-weekly", dest="salary_weekly", type=float)
+    p.add_argument("--state", help="state abbr for --exempt (uses higher of federal/state EAP)")
+    p.add_argument("--list-eap", dest="list_eap", action="store_true")
     return p
 
 
@@ -434,10 +536,13 @@ def main() -> None:
     if args.show_bands:
         cmd_bands(args.show_bands)
         return
+    if args.list_eap:
+        cmd_list_eap()
+        return
     if args.exempt:
         if args.salary_weekly is None:
             raise SystemExit("--exempt needs --salary-weekly")
-        cmd_exempt(args.salary_weekly, args.hourly)
+        cmd_exempt(args.salary_weekly, args.hourly, args.state or args.quote, args.band)
         return
     if args.batch:
         cmd_batch(Path(args.batch), bool(args.daily))
