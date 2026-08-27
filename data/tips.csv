@@ -1,0 +1,59 @@
+abbr,band,role,combined_mw,max_tip_credit,cash_wage,credit_kind,tipped_def,notes,source_id,authority
+FED,federal,default,7.25,5.12,2.13,flsa,more_than_30_month,FLSA §3(m)(2)(A) max credit $7.25−$2.13; OT cash = MW×1.5 − credit,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01; 29 CFR 531.60
+AL,statewide,default,7.25,5.12,2.13,flsa,more_than_30_month,No state MW; FLSA cash $2.13,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+AK,statewide,default,14.00,0.00,14.00,none,,No tip credit; cash = full state MW,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+AZ,statewide,default,15.15,3.00,12.15,reduced,not_specified,Indexed; $3.00 max credit,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+AR,statewide,default,11.00,8.37,2.63,reduced,not_specified,Cash $2.63,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+CA,statewide,default,16.90,0.00,16.90,none,,No tip credit; cash = full state MW,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+CO,statewide,default,15.16,3.02,12.14,reduced,more_than_30_month,COMPS; $3.02 max credit,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+CT,statewide,hotel,16.94,10.56,6.38,ct_hotel,not_specified,Hotel/restaurant cash $6.38,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+CT,statewide,bartender,16.94,8.71,8.23,ct_bartender,not_specified,Bartenders who customarily receive tips cash $8.23,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+DE,statewide,default,15.00,12.77,2.23,reduced,more_than_30_month,Cash $2.23,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+DC,statewide,default,18.40,8.10,10.30,reduced,not_specified,Cash at least 56% of MW (fn.3),DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+FL,statewide,default,14.00,3.02,10.98,reduced,more_than_30_month,DOL July 1 table; remaining $15 MW step 2026-09-30 does not invent a new cash wage,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+GA,statewide,default,7.25,5.12,2.13,flsa,more_than_30_month,State MW law does not apply to tipped employees; FLSA cash $2.13,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+HI,statewide,default,16.00,1.25,14.75,reduced,,Credit only if cash+tips are at least $7.00 more than MW (HI footnote),DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+ID,statewide,default,7.25,3.90,3.35,reduced,more_than_30_month,Cash $3.35,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+IL,statewide,default,15.00,6.00,9.00,reduced,not_specified,40% of MW ($6.00) max credit,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+IN,statewide,default,7.25,5.12,2.13,flsa,more_than_30_month,FLSA cash $2.13,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+IA,statewide,default,7.25,2.90,4.35,reduced,more_than_30_month,40% of MW ($2.90) max credit,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+KS,statewide,default,7.25,5.12,2.13,flsa,not_specified,FLSA cash $2.13,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+KY,statewide,default,7.25,5.12,2.13,flsa,more_than_30_month,FLSA cash $2.13,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+LA,statewide,default,7.25,5.12,2.13,flsa,more_than_30_month,No state MW; FLSA cash $2.13,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+ME,statewide,default,15.10,7.55,7.55,reduced,more_than_191_month,50% of MW,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+MD,statewide,default,15.00,11.37,3.63,reduced,more_than_30_month,Cash $3.63,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+MA,statewide,default,15.00,8.25,6.75,reduced,more_than_20_month,Cash $6.75,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+MI,statewide,default,13.73,8.24,5.49,reduced,not_specified,Cash steps toward 50% of MW by 2031 (fn.15),DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+MN,statewide,default,11.41,0.00,11.41,none,,No tip credit; cash = full state MW,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+MS,statewide,default,7.25,5.12,2.13,flsa,more_than_30_month,No state MW; FLSA cash $2.13,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+MO,statewide,default,15.00,7.50,7.50,reduced,not_specified,50% of MW,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+MT,statewide,default,10.85,0.00,10.85,none,,No tip credit on the DOL large-employer row; $4.00 subminimum omitted,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+NE,statewide,default,15.00,12.87,2.13,flsa,not_specified,State MW $15 with FLSA cash $2.13,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+NV,statewide,default,12.00,0.00,12.00,none,,No tip credit; cash = full state MW,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+NH,statewide,default,7.25,3.98,3.27,reduced,more_than_30_month,Cash $3.27,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+NJ,statewide,default,15.92,9.87,6.05,reduced,more_than_30_month,Default ≥6 employees; small/seasonal $15.23 cash not separately listed on tipped table,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+NM,statewide,default,12.00,9.00,3.00,reduced,more_than_30_month,Cash $3.00,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+NY,downstate,food,17.00,5.65,11.35,ny_food,not_specified,NYC + Long Island + Westchester food service 2026-01-01,NY-DOL-TIP-2026,NY DOL Minimum Wage for Tipped Workers 2026-01-01
+NY,downstate,service,17.00,2.85,14.15,ny_service,not_specified,NYC + Long Island + Westchester service employees 2026-01-01,NY-DOL-TIP-2026,NY DOL Minimum Wage for Tipped Workers 2026-01-01
+NY,rest_of_state,food,16.00,5.30,10.70,ny_food,not_specified,Remainder of NYS food service 2026-01-01,NY-DOL-TIP-2026,NY DOL Minimum Wage for Tipped Workers 2026-01-01
+NY,rest_of_state,service,16.00,2.70,13.30,ny_service,not_specified,Remainder of NYS service employees 2026-01-01,NY-DOL-TIP-2026,NY DOL Minimum Wage for Tipped Workers 2026-01-01
+NC,statewide,default,7.25,5.12,2.13,flsa,more_than_20_month,FLSA cash $2.13; signed tip certification (fn.13),DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+ND,statewide,default,7.25,2.39,4.86,reduced,more_than_30_month,33% of MW ($2.39) max credit,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+OH,statewide,default,11.00,5.50,5.50,reduced,more_than_30_month,Gross receipts $405k+; small-employer $7.25 band omitted from tipped table,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+OK,statewide,default,7.25,5.12,2.13,flsa,not_specified,FLSA cash $2.13,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+OR,portland,default,16.80,0.00,16.80,none,,No tip credit; Portland metro,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+OR,standard,default,15.55,0.00,15.55,none,,No tip credit; standard statewide,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+OR,nonurban,default,14.55,0.00,14.55,none,,No tip credit; nonurban counties,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+PA,statewide,default,7.25,4.42,2.83,reduced,135_per_month,Cash $2.83,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+RI,statewide,default,16.00,12.11,3.89,reduced,more_than_30_month,Cash $3.89,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+SC,statewide,default,7.25,5.12,2.13,flsa,more_than_30_month,No state MW; FLSA cash $2.13,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+SD,statewide,default,11.85,5.92,5.93,reduced,more_than_35_month,50% of MW; cash $5.93 (table rounding),DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+TN,statewide,default,7.25,5.12,2.13,flsa,more_than_30_month,No state MW; FLSA cash $2.13,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+TX,statewide,default,7.25,5.12,2.13,flsa,more_than_20_month,FLSA cash $2.13,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+UT,statewide,default,7.25,5.12,2.13,flsa,more_than_30_month,FLSA cash $2.13,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+VT,statewide,default,14.42,7.21,7.21,reduced,more_than_120_month,50% of MW,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+VA,statewide,default,12.77,10.64,2.13,flsa,more_than_30_month,State MW $12.77 with FLSA cash $2.13,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+WA,statewide,default,17.13,0.00,17.13,none,,No tip credit; cash = full state MW,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+WV,statewide,default,8.75,6.13,2.62,reduced,not_specified,70% of MW max credit; law applies to 6+ employees (fn.10),DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+WI,statewide,default,7.25,4.92,2.33,reduced,not_specified,Cash $2.33,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
+WY,statewide,default,7.25,5.12,2.13,flsa,more_than_30_month,State MW below federal; FLSA cash $2.13,DOL-WHD-TIP-2026-07-01,DOL WHD Minimum Wages for Tipped Employees 2026-07-01
